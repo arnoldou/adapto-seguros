@@ -1,0 +1,47 @@
+---
+import { waLink } from '../lib/contact';
+
+const tarjetas = [
+  { titulo: 'Reclamos acompañados', texto: 'Te guiamos con formularios, fotos, denuncias y seguimiento hasta la resolución.', cta: 'Necesito ayuda con un reclamo' },
+  { titulo: 'Revisión de póliza', texto: '¿Ya tienes seguro? Revisamos coberturas, exclusiones y precio para mejorarlo.', cta: 'Quiero revisar mi póliza' },
+  { titulo: 'Renovaciones a tiempo', texto: 'Te avisamos antes del vencimiento para que nunca quedes desprotegido.', cta: 'Consultar renovación' },
+];
+
+const asistencias = [
+  ['ASESUISA', '2298-8888'],
+  ['ASSA', '2278-2772'],
+  ['SISA', '2298-7472'],
+  ['ABANK Seguros', '(503) 2521-8300'],
+  ['MAPFRE', '2257-6677'],
+  ['ACSA', '*600'],
+];
+---
+<section id="gestiones" class="bg-marfil-50 py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="revelar max-w-2xl">
+      <p class="eyebrow text-abismo-600">Después de contratar</p>
+      <h2 class="font-display mt-3 text-3xl text-abismo-950 sm:text-4xl">También te acompañamos cuando usas tu seguro</h2>
+    </div>
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      {tarjetas.map((t) => (
+        <article class="revelar rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
+          <h3 class="font-display text-xl text-abismo-950">{t.titulo}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">{t.texto}</p>
+          <a href={waLink(`Hola Adapto Seguros. ${t.cta}.`)} target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-bold text-emerald-700 hover:text-emerald-600">{t.cta} →</a>
+        </article>
+      ))}
+    </div>
+    <div class="revelar mt-8 rounded-3xl bg-abismo-950 p-7 sm:p-10">
+      <h3 class="font-display text-2xl text-white">Teléfonos de asistencia directa</h3>
+      <p class="mt-1 text-sm text-white/65">Guarda estos números: ante un siniestro, primero documenta con fotos y luego llama.</p>
+      <dl class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {asistencias.map(([nombre, tel]) => (
+          <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5">
+            <dt class="text-sm font-bold text-white">{nombre}</dt>
+            <dd><a href={`tel:+503${tel.replace(/\D/g, '').slice(-8)}`} class="text-sm font-bold text-cielo-300 hover:text-cielo-100">{tel}</a></dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

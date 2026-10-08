@@ -1,0 +1,45 @@
+---
+import { waLink } from '../lib/contact';
+
+const coberturas = [
+  { icon: 'M12 4a8 8 0 0 0-8 8v5l2.5-1.5L9 17h3a8 8 0 0 0 8-8 8 8 0 0 0-8-9Zm-4 8.5A1.5 1.5 0 1 1 9.5 11 1.5 1.5 0 0 1 8 12.5Zm8 0A1.5 1.5 0 1 1 17.5 11 1.5 1.5 0 0 1 16 12.5Z', titulo: 'Seguro de salud', texto: 'Atención médica, hospitalización y tratamientos cuidando tu presupuesto.' },
+  { icon: 'M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11m-14 0h14a2 2 0 0 1 2 2v4h-2.5m-13.5 0H3v-4a2 2 0 0 1 2-2Zm2.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm11 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z', titulo: 'Seguro de vehículo', texto: 'Choque, robo y responsabilidad a terceros, con grúa y asistencia vial.' },
+  { icon: 'M12 21s-7-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12C19 16.4 12 21 12 21Z', titulo: 'Seguro de vida', texto: 'Respaldo económico para tu familia ante fallecimiento o invalidez.' },
+  { icon: 'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z', titulo: 'Seguro de vivienda', texto: 'Incendio, terremoto, inundación y robo para tu hogar y sus contenidos.' },
+  { icon: 'M12 3 2.5 20h19Zm0 5v4m0 3v3', titulo: 'Accidentes personales', texto: 'Apoyo económico ante lesiones, incapacidad y gastos médicos.' },
+  { icon: 'M12 3l7 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6Zm-3 7v3m6-3v3', titulo: 'Robo y hurto', texto: 'Cobertura de bienes sustraídos y daños derivados del evento.' },
+  { icon: 'M6 3h12v18l-2-1.5L14 21l-2-1.5L10 21l-2-1.5L6 21Zm4 5h4m-4 3h4', titulo: 'Seguro de deuda', texto: 'Protege tus compromisos financieros ante imprevistos.' },
+  { icon: 'M4 7h16v10H4zM8 3v4m8-4v4M4 12h16', titulo: 'Seguro para negocios', texto: 'Activos, responsabilidad civil, transporte y pérdida de utilidades.' },
+  { icon: 'M9 12l2 2 4-5m-2-7h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4V0l2 2Z', titulo: 'Fianzas y garantías', texto: 'Oferta, fiel cumplimiento y anticipo para contratos y licitaciones.' },
+];
+---
+<section id="coberturas" class="relative overflow-hidden bg-marfil-50 py-20 lg:py-28">
+  <span aria-hidden="true" class="font-display texto-contorno pointer-events-none absolute -top-4 left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[18vw] font-bold leading-none opacity-60 lg:text-[10rem]">ADAPTO</span>
+  <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="revelar mx-auto max-w-2xl text-center">
+      <p class="eyebrow text-abismo-600">Tipos de seguro</p>
+      <h2 class="font-display mt-3 text-3xl text-abismo-950 sm:text-4xl lg:text-5xl">Cobertura para cada etapa de tu vida</h2>
+      <p class="mt-4 text-slate-600">Cada póliza se revisa según tu necesidad real. Elige una cobertura y cotízala por WhatsApp en un clic.</p>
+    </div>
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {coberturas.map((c) => (
+        <article class="revelar group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-xl">
+          <span aria-hidden="true" class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-abismo-800 via-cielo-500 to-latón-500"></span>
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-abismo-900 text-cielo-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={c.icon}/></svg>
+          </div>
+          <h3 class="font-display mt-4 text-xl text-abismo-950">{c.titulo}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">{c.texto}</p>
+          <a href={waLink(`Hola Adapto Seguros, quiero cotizar: ${c.titulo}.`)} target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-abismo-700 transition group-hover:gap-3 hover:text-abismo-900">
+            Cotizar esta cobertura <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const obs = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.12 });
+  document.querySelectorAll('.revelar').forEach((el) => obs.observe(el));
+</script>

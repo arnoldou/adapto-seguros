@@ -1,0 +1,69 @@
+---
+import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, PHONE_DISPLAY, EMAIL, ADDRESS, SCHEDULE } from '../lib/contact';
+---
+<section id="contacto" class="bg-abismo-950 py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="revelar">
+        <p class="eyebrow text-cielo-300">Asegúrate hoy</p>
+        <h2 class="font-display mt-3 text-3xl text-white sm:text-4xl lg:text-5xl">Cuéntanos qué necesitas proteger</h2>
+        <p class="mt-4 text-white/70">Escríbenos por WhatsApp o déjanos tus datos: un asesor te contactará en horario hábil.</p>
+        <ul class="mt-8 space-y-4 text-sm">
+          <li class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-cielo-500/20 text-cielo-300">◉</span>
+            <span><strong class="block text-white">Teléfono / WhatsApp</strong><a class="text-cielo-300 hover:text-cielo-100" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener">{WHATSAPP_DISPLAY}</a><span class="text-white/50"> · </span><span class="text-white/80">{PHONE_DISPLAY}</span></span>
+          </li>
+          <li class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-cielo-500/20 text-cielo-300">✉</span>
+            <span><strong class="block text-white">Correo</strong><a class="text-cielo-300 hover:text-cielo-100" href={`mailto:${EMAIL}`}>{EMAIL}</a></span>
+          </li>
+          <li class="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-cielo-500/20 text-cielo-300">⌖</span>
+            <span><strong class="block text-white">Dirección</strong><span class="text-white/80">{ADDRESS}</span><br /><span class="text-xs text-white/55">{SCHEDULE}</span></span>
+          </li>
+        </ul>
+        <iframe title="Mapa de San Miguel, El Salvador" src="https://www.google.com/maps?q=San+Miguel,+El+Salvador&output=embed" class="mt-6 h-56 w-full rounded-2xl border border-white/10" loading="lazy"></iframe>
+      </div>
+      <form id="contacto-form" class="revelar h-fit rounded-[2rem] bg-white p-6 shadow-2xl sm:p-8">
+        <label class="block text-xs font-bold uppercase tracking-widest text-slate-500" for="c-nombre">Nombre completo</label>
+        <input id="c-nombre" required type="text" placeholder="Tu nombre" class="mt-2 w-full rounded-xl border border-slate-200 bg-marfil-50 px-4 py-3 text-sm outline-none focus:border-abismo-600 focus:ring-2 focus:ring-abismo-600/20" />
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500" for="c-tel">Teléfono</label>
+            <input id="c-tel" required type="tel" placeholder="7XXX-XXXX" class="mt-2 w-full rounded-xl border border-slate-200 bg-marfil-50 px-4 py-3 text-sm outline-none focus:border-abismo-600 focus:ring-2 focus:ring-abismo-600/20" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500" for="c-tipo">Tipo de seguro</label>
+            <select id="c-tipo" class="mt-2 w-full rounded-xl border border-slate-200 bg-marfil-50 px-4 py-3 text-sm outline-none focus:border-abismo-600">
+              <option>Seguro de salud</option>
+              <option>Seguro de vida</option>
+              <option>Seguro de vehículo</option>
+              <option>Seguro de vivienda</option>
+              <option>Seguro para negocio</option>
+              <option>Fianza</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+        <label class="mt-4 block text-xs font-bold uppercase tracking-widest text-slate-500" for="c-msg">Mensaje</label>
+        <textarea id="c-msg" rows="4" placeholder="Cuéntanos brevemente qué quieres asegurar…" class="mt-2 w-full rounded-xl border border-slate-200 bg-marfil-50 px-4 py-3 text-sm outline-none focus:border-abismo-600 focus:ring-2 focus:ring-abismo-600/20"></textarea>
+        <button type="submit" class="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-4 text-sm font-bold text-white transition hover:bg-emerald-400">
+          Enviar por WhatsApp
+        </button>
+        <p class="mt-3 text-center text-xs text-slate-500">Al enviar se abrirá WhatsApp con tu mensaje listo. Sin spam.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ numero: WHATSAPP_NUMBER }}>
+  document.getElementById('contacto-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nombre = document.getElementById('c-nombre')?.value.trim() ?? '';
+    const tel = document.getElementById('c-tel')?.value.trim() ?? '';
+    const tipo = document.getElementById('c-tipo')?.value ?? '';
+    const msg = document.getElementById('c-msg')?.value.trim() ?? '';
+    const texto = `Hola Adapto Seguros, soy ${nombre} (${tel}). Me interesa: ${tipo}.${msg ? ` Detalle: ${msg}` : ''}`;
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+  });
+</script>

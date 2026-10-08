@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-abismo-950: #081a38;
+  --color-abismo-900: #0a2247;
+  --color-abismo-800: #102f5f;
+  --color-abismo-700: #163d7a;
+  --color-abismo-600: #1e4f96;
+  --color-cielo-500: #6fa9c9;
+  --color-cielo-400: #8fbdd6;
+  --color-cielo-300: #b3d3e3;
+  --color-cielo-100: #e3eff6;
+  --color-marfil-50: #f6f8fb;
+  --color-marfil-100: #eef2f7;
+  --color-latón-500: #c9a86a;
+  --color-latón-400: #d9bd85;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-marfil-50);
+  color: #0f1f38;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* Firma visual: arco Adapto (la "A" del logo como techo protector) */
+.arco {
+  border-radius: 999px 999px 28px 28px;
+}
+.arco-img {
+  border-radius: 200px 200px 24px 24px;
+}
+
+/* Carrusel hero: fundido + Ken Burns */
+.hero-slide {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+}
+.hero-slide.activo {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hero-slide.activo img {
+  animation: kenburns 7s ease-out forwards;
+}
+@keyframes kenburns {
+  from { transform: scale(1.12); }
+  to { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: none; }
+  .hero-slide.activo img { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Reveal on scroll */
+.revelar {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.revelar.visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .revelar { opacity: 1; transform: none; transition: none; }
+}
+
+/* tipeo outline gigante */
+.texto-contorno {
+  -webkit-text-stroke: 1px rgba(143, 189, 214, 0.4);
+  color: transparent;
+}

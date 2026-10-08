@@ -1,0 +1,61 @@
+---
+import { WHATSAPP_NUMBER } from '../lib/contact';
+
+const links = [
+  { href: '#coberturas', label: 'Coberturas' },
+  { href: '#proceso', label: 'Cómo funciona' },
+  { href: '#cotizar', label: 'Cotizar' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#contacto', label: 'Contacto' },
+];
+---
+<header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
+    <a href="#inicio" class="flex items-center gap-3">
+      <img src="/logo.jpg" alt="Adapto Seguros" class="h-11 w-11 rounded-full object-cover ring-2 ring-cielo-400/60" />
+      <span class="leading-tight">
+        <span class="block font-display text-xl tracking-wide text-white">ADAPTO</span>
+        <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-cielo-300">seguros</span>
+      </span>
+    </a>
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Principal">
+      {links.map((l) => (
+        <a href={l.href} class="text-sm font-semibold text-white/85 transition hover:text-cielo-300">{l.label}</a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-3">
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Adapto Seguros, quiero cotizar un seguro.')}`}
+        target="_blank" rel="noopener"
+        class="hidden rounded-full bg-cielo-500 px-5 py-2.5 text-sm font-bold text-abismo-950 transition hover:bg-cielo-300 sm:inline-flex"
+      >
+        Cotizar ahora
+      </a>
+      <button id="menu-btn" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white lg:hidden" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="menu-movil" class="mx-4 hidden rounded-2xl bg-abismo-950/95 p-4 shadow-2xl backdrop-blur lg:hidden">
+    {links.map((l) => (
+      <a href={l.href} class="block rounded-xl px-4 py-3 text-sm font-semibold text-white/90 hover:bg-white/10">{l.label}</a>
+    ))}
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('navbar');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav?.classList.add('bg-abismo-950/90', 'backdrop-blur', 'shadow-lg');
+    else nav?.classList.remove('bg-abismo-950/90', 'backdrop-blur', 'shadow-lg');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu-movil');
+  btn?.addEventListener('click', () => {
+    const abierto = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', String(abierto));
+  });
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>

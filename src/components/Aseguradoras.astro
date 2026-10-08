@@ -1,0 +1,14 @@
+---
+const marcas = ['ASSA', 'SISA', 'ASESUISA', 'MAPFRE', 'ACSA', 'Seguros ABANK', 'Davivienda', 'La Central', 'Qualitas', 'PALIG'];
+---
+<section class="border-y border-slate-200 bg-white py-12">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <p class="revelar eyebrow text-center text-slate-500">Cotizamos con las principales aseguradoras del país</p>
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+      {marcas.map((m) => (
+        <span class="revelar rounded-full border border-slate-200 bg-marfil-50 px-5 py-2 text-sm font-bold tracking-wide text-abismo-800">{m}</span>
+      ))}
+    </div>
+    <p class="mt-4 text-center text-xs text-slate-500">Corredora independiente · Comparamos beneficios, exclusiones y precio por ti</p>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+const faqs = [
+  { q: '¿Qué información necesitan para cotizarme?', a: 'Depende del ramo: nombre y contacto, tipo de seguro, datos del bien o persona asegurada y el presupuesto aproximado. Con eso comparamos opciones en 24–48 horas hábiles.' },
+  { q: '¿Puedo comparar varias aseguradoras?', a: 'Sí, esa es nuestra propuesta de valor. Como corredora independiente revisamos beneficios, exclusiones, deducibles y precio entre compañías para que decidas con información completa.' },
+  { q: '¿También ayudan con reclamos?', a: 'Sí. Te orientamos con formularios, documentos, fotos, redes médicas y contactos de asistencia según tu aseguradora, y damos seguimiento a tu caso.' },
+  { q: '¿Atienden fuera de San Miguel?', a: 'Sí. Estamos en San Miguel y atendemos toda la zona oriental (La Unión, Morazán, Usulután) y el resto del país por WhatsApp, llamada y videollamada.' },
+  { q: '¿La asesoría tiene costo?', a: 'La cotización y asesoría inicial no tienen costo. Nuestra remuneración proviene de la comisión que paga la aseguradora, sin recargo para ti.' },
+];
+---
+<section id="faq" class="bg-marfil-100 py-20 lg:py-24">
+  <div class="mx-auto max-w-3xl px-5 lg:px-8">
+    <div class="revelar text-center">
+      <p class="eyebrow text-abismo-600">Preguntas frecuentes</p>
+      <h2 class="font-display mt-3 text-3xl text-abismo-950 sm:text-4xl">Respuestas antes de cotizar</h2>
+    </div>
+    <div class="mt-8 space-y-3">
+      {faqs.map((f) => (
+        <details class="revelar group rounded-2xl bg-white px-6 py-5 shadow-sm ring-1 ring-slate-200 open:ring-abismo-600/30">
+          <summary class="cursor-pointer list-none text-sm font-bold text-abismo-900 marker:hidden [&::-webkit-details-marker]:hidden">
+            <span class="flex items-center justify-between gap-4">{f.q}<span class="text-cielo-500 transition group-open:rotate-45" aria-hidden="true">+</span></span>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

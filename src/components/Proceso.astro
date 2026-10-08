@@ -1,0 +1,25 @@
+---
+const pasos = [
+  { n: '01', titulo: 'Entendemos tu necesidad', texto: 'Escuchamos tu caso por WhatsApp, llamada o visita y definimos qué proteger primero.' },
+  { n: '02', titulo: 'Comparamos aseguradoras', texto: 'Cotizamos con varias compañías: beneficios, exclusiones y precio, sin letra pequeña.' },
+  { n: '03', titulo: 'Te acompañamos siempre', texto: 'Emitimos tu póliza y te apoyamos en renovaciones, reclamos y gestiones.' },
+];
+---
+<section id="proceso" class="bg-abismo-950 py-20 lg:py-28">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="revelar max-w-2xl">
+      <p class="eyebrow text-cielo-300">Cómo funciona</p>
+      <h2 class="font-display mt-3 text-3xl text-white sm:text-4xl lg:text-5xl">Tu póliza en 3 pasos simples</h2>
+    </div>
+    <div class="relative mt-12 grid gap-6 lg:grid-cols-3">
+      <div aria-hidden="true" class="absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-cielo-500/50 to-transparent lg:block"></div>
+      {pasos.map((p) => (
+        <article class="revelar relative rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur">
+          <span class="font-display text-5xl text-cielo-500/40">{p.n}</span>
+          <h3 class="font-display mt-3 text-2xl text-white">{p.titulo}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/70">{p.texto}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

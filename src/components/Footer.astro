@@ -1,0 +1,37 @@
+---
+import { WHATSAPP_NUMBER, WHATSAPP_DISPLAY, EMAIL, ADDRESS } from '../lib/contact';
+---
+<footer class="border-t border-white/10 bg-abismo-950 pb-28 pt-14 lg:pb-14">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-3 lg:px-8">
+    <div>
+      <div class="flex items-center gap-3">
+        <img src="/logo.jpg" alt="Adapto Seguros" class="h-12 w-12 rounded-full object-cover ring-2 ring-cielo-400/60" />
+        <span class="leading-tight">
+          <span class="block font-display text-2xl tracking-wide text-white">ADAPTO</span>
+          <span class="block text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-cielo-300">seguros</span>
+        </span>
+      </div>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/60">Corredora independiente en San Miguel. Asesoría clara, humana y técnica en seguros de personas, daños y fianzas.</p>
+    </div>
+    <nav aria-label="Mapa del sitio">
+      <p class="eyebrow text-cielo-300">Menú</p>
+      <ul class="mt-4 grid grid-cols-2 gap-2 text-sm font-semibold text-white/75">
+        <li><a class="hover:text-cielo-300" href="#coberturas">Coberturas</a></li>
+        <li><a class="hover:text-cielo-300" href="#proceso">Cómo funciona</a></li>
+        <li><a class="hover:text-cielo-300" href="#cotizar">Cotizar</a></li>
+        <li><a class="hover:text-cielo-300" href="#gestiones">Gestiones</a></li>
+        <li><a class="hover:text-cielo-300" href="#nosotros">Nosotros</a></li>
+        <li><a class="hover:text-cielo-300" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="eyebrow text-cielo-300">Contacto</p>
+      <ul class="mt-4 space-y-2 text-sm text-white/75">
+        <li><a class="hover:text-cielo-300" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener">WhatsApp {WHATSAPP_DISPLAY}</a></li>
+        <li><a class="hover:text-cielo-300" href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+        <li>{ADDRESS}</li>
+      </ul>
+    </div>
+  </div>
+  <p class="mx-auto mt-10 max-w-7xl px-5 text-xs text-white/40 lg:px-8">© 2026 Adapto Seguros · San Miguel, El Salvador. Todos los derechos reservados.</p>
+</footer>

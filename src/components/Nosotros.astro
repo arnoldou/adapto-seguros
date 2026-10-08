@@ -1,0 +1,43 @@
+---
+import { waLink } from '../lib/contact';
+
+const puntos = [
+  'Atención personalizada de principio a fin, sin call centers impersonales.',
+  'Comparación técnica de beneficios, exclusiones y costos entre aseguradoras.',
+  'Acompañamiento en contratación, renovación y reclamos.',
+  'Base en San Miguel: entendemos la zona oriental y visitamos tu negocio.',
+];
+---
+<section id="nosotros" class="overflow-hidden bg-white py-20 lg:py-28">
+  <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:px-8">
+    <div class="revelar relative mx-auto w-full max-w-md">
+      <div aria-hidden="true" class="absolute -inset-4 rounded-t-full rounded-b-[2rem] bg-gradient-to-b from-cielo-300/40 to-latón-500/20"></div>
+      <img src="/logo.jpg" alt="Logo de Adapto Seguros" class="arco-img relative h-[480px] w-full object-cover shadow-2xl" />
+      <div class="absolute -bottom-6 left-1/2 w-[90%] -translate-x-1/2 rounded-2xl bg-abismo-950 px-6 py-4 text-center shadow-xl">
+        <p class="font-display text-lg text-white">San Miguel · El Salvador</p>
+        <p class="text-xs uppercase tracking-[0.25em] text-cielo-300">Asesoría independiente</p>
+      </div>
+    </div>
+    <div class="revelar">
+      <p class="eyebrow text-abismo-600">Quiénes somos</p>
+      <h2 class="font-display mt-3 text-3xl text-abismo-950 sm:text-4xl lg:text-5xl">Traducimos el seguro a decisiones simples</h2>
+      <p class="mt-5 leading-relaxed text-slate-600"><strong class="text-abismo-900">Adapto Seguros</strong> es una corredora independiente con base en San Miguel. Acompañamos a personas, familias y empresas de la zona oriental a elegir la protección correcta: comparamos alternativas, explicamos la letra pequeña y nos quedamos contigo cuando más nos necesitas.</p>
+      <ul class="mt-6 space-y-3">
+        {puntos.map((p) => (
+          <li class="flex gap-3 text-sm leading-relaxed text-slate-700">
+            <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">✓</span>{p}
+          </li>
+        ))}
+      </ul>
+      <div class="mt-8 grid grid-cols-3 gap-4">
+        {[['15+', 'Aseguradoras comparadas'], ['100%', 'Acompañamiento en reclamos'], ['24/7', 'Asistencia en emergencias']].map(([n, l]) => (
+          <div class="rounded-2xl bg-marfil-100 p-4 text-center">
+            <p class="font-display text-2xl text-abismo-900 sm:text-3xl">{n}</p>
+            <p class="mt-1 text-[0.7rem] font-bold uppercase tracking-wider text-slate-500">{l}</p>
+          </div>
+        ))}
+      </div>
+      <a href={waLink('Hola Adapto Seguros, quiero conocer más sobre ustedes.')} target="_blank" rel="noopener" class="mt-8 inline-flex rounded-full bg-abismo-900 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-abismo-700">Conocer al equipo →</a>
+    </div>
+  </div>
+</section>
