@@ -1,7 +1,7 @@
 // Número y datos de contacto — CAMBIA ESTOS VALORES por los reales de Adapto Seguros.
-export const WHATSAPP_NUMBER = '50379000000'; // formato internacional sin "+" ni espacios ni guiones
-export const WHATSAPP_DISPLAY = '+503 7900-0000';
-export const PHONE_DISPLAY = '+503 2660-0000';
+export const WHATSAPP_NUMBER = '50370369115'; // formato internacional sin "+" ni espacios ni guiones
+export const WHATSAPP_DISPLAY = '+503 7036-9115';
+export const PHONE_DISPLAY = '+503 7036-9115';
 export const EMAIL = 'hola@adaptoseguros.com.sv';
 export const ADDRESS = 'San Miguel, El Salvador';
 export const SCHEDULE = 'Lun–Vie 8:00 a.m. – 5:00 p.m. · Sáb 8:30 a.m. – 12:00 m.';
