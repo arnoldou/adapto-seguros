@@ -1,7 +1,36 @@
 ---
 import '../styles/global.css';
+import { EMAIL, WHATSAPP_DISPLAY } from '../lib/contact';
 interface Props { title?: string; description?: string; }
-const { title = 'Adapto Seguros · San Miguel, El Salvador', description = 'Corredora independiente de seguros en San Miguel: vida, salud, autos, vivienda, negocios y fianzas. Cotiza por WhatsApp.' } = Astro.props;
+const { title = 'Adapto Seguros · Corredora de seguros en San Miguel, El Salvador', description = 'Adapto Seguros en San Miguel: seguros de vida, salud, vehículo, vivienda, negocios y fianzas. Cotiza por WhatsApp con asesoría independiente.' } = Astro.props;
+const site = (Astro.site ?? new URL('https://adaptoseguros.com.sv')).toString().replace(/\/$/, '');
+const canonical = `${site}/`;
+const ogImage = `${site}/logo.jpg`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'InsuranceAgency',
+  name: 'Adapto Seguros',
+  description,
+  url: canonical,
+  logo: ogImage,
+  email: EMAIL,
+  telephone: WHATSAPP_DISPLAY,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'San Miguel',
+    addressCountry: 'SV',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 13.493926886373442,
+    longitude: -88.1943510069309,
+  },
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:30', closes: '12:00' },
+  ],
+  areaServed: 'El Salvador',
+};
 ---
 <!doctype html>
 <html lang="es-SV">
@@ -10,10 +39,24 @@ const { title = 'Adapto Seguros · San Miguel, El Salvador', description = 'Corr
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0a2247" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_SV" />
+    <meta property="og:site_name" content="Adapto Seguros" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="icon" type="image/jpeg" href="/logo.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <slot />
